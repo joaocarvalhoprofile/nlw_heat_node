@@ -9,6 +9,14 @@ app.get("/github", (request, response) => {
   )
 })
 
-app.listen(4000, () => {
-  console.log('Server is running on port 4000')
+app.get("/signin/callback", (request, response) => {
+  const { code } = request.query
+
+  return response.json(code)
+})
+
+const PORT = 4000
+
+app.listen(PORT, () => {
+  console.log(` Server is running on port ${PORT}`)
 })

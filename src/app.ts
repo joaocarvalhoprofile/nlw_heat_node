@@ -1,7 +1,12 @@
 import "dotenv/config"
 import express from "express"
 
+import { AuthenticateUserRoutes } from './api/routes/AuthenticateRoutes'
+
 const app = express()
+app.use(express.json())
+
+app.use(AuthenticateUserRoutes)
 
 app.get("/github", (request, response) => {
   response.redirect(

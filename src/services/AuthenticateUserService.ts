@@ -1,11 +1,12 @@
 import axios from 'axios'
+import prismaClient from '../prisma'
 
 interface IAccessTokenResponse {
   access_token: string;
 }
 
 interface IUserResponse {
-  id: number,
+  id: string,
   name: string,
   login: string,
   avatar_url: string
@@ -33,7 +34,14 @@ class AuthenticateUserService {
       }
     })
 
-    return response.data
+    const { id, name, login, avatar_url } = response.data
+    const user = await prismaClient.user.findFirst({
+      where: {
+        github_id: id
+      }
+    })
+
+    return name
   }
 
 }

@@ -1,12 +1,23 @@
+import prismaClient from '../prisma'
 
 interface IMessage {
-  text: string
+  message: string
   user_id: string
 }
 
 class CreateMessageService {
-  async execute({ text, user_id }: IMessage) {
+  async execute({ message, user_id }: IMessage) {
+    const newMessage = await prismaClient.message.create({
+      data: {
+        text: message,
+        user_id
+      },
+      include: {
+        User: true,
+      }
+    })
 
+    return newMessage
   }
 }
 

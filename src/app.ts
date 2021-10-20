@@ -1,7 +1,7 @@
 import "dotenv/config"
 import express from "express"
 
-import { AuthenticateUserRoutes } from './api/routes/AuthenticateRoutes'
+import { AuthenticateUserRoutes } from './Routes'
 
 const app = express()
 app.use(express.json())

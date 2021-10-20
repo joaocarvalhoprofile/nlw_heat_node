@@ -3,7 +3,8 @@ import { Router } from 'express'
 import { AuthenticateUserController } from './controllers/AuthenticateUserController'
 import { CreateMessageController } from './controllers/CreateMessageController'
 import { ensureAuthenticated } from './middleware/ensureAuthenticated'
-import { GetLast3MessagesController } from './controllers/GetLast3MessgesController'
+import { GetLast3MessagesController } from './controllers/GetLast3MessagesController'
+import { ProfileUserController } from './controllers/ProfileUserController'
 
 const router = Router()
 
@@ -12,6 +13,8 @@ router.post("/authenticate", new AuthenticateUserController().handle)
 router.post("/messages", ensureAuthenticated, new CreateMessageController().handle)
 
 router.get("/messages/last3", ensureAuthenticated, new GetLast3MessagesController().handle)
+
+router.get("/user/profile", ensureAuthenticated, new ProfileUserController().handle)
 
 export { router }
 

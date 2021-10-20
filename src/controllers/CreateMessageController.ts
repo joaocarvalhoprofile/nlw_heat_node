@@ -10,7 +10,7 @@ class CreateMessageController {
     const service = new CreateMessageService()
     const createdMessage = await service.execute({ message, user_id })
 
-    return createdMessage
+    return response.status(201).json(createdMessage)
   }
 }
 

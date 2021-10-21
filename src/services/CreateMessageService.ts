@@ -14,7 +14,7 @@ class CreateMessageService {
         user_id
       },
       include: {
-        User: true,
+        user: true,
       }
     })
 
@@ -23,8 +23,8 @@ class CreateMessageService {
       user_id: newMessage.user_id,
       created_at: newMessage.created_at,
       user: {
-        name: newMessage.User.name,
-        avatar_url: newMessage.User.avatar_url
+        name: newMessage.user.name,
+        avatar_url: newMessage.user.avatar_url
       }
     }
 

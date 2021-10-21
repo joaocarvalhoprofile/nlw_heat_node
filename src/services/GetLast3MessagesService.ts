@@ -8,7 +8,7 @@ class GetLast3MessagesService {
         created_at: "desc"
       },
       include: {
-        User: true
+        user: true,
       }
     })
 
